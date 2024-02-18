@@ -194,16 +194,21 @@ describe('타입스크립트 인터페이스', () => {
         interface IUser {
             id: number;
             name: string;
+            getName(): string;
         }
 
         // 인터페이스에서 선언한 속성들이 구현되어야 합니다.
         const user: IUser = {
             id: 1,
             name: 'Kim',
+            getName: function () {
+                return this.name;
+            },
         };
 
         expect(user.id).toBe(1);
         expect(user.name).toBe('Kim');
+        expect(user.getName()).toBe('Kim');
     });
     it('속성이나 메서드가 동일하면 대입됨', () => {
         interface IUser {
