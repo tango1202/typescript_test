@@ -40,7 +40,13 @@ describe('타입스크립트 기본 문법', () => {
         expect(tuple[0]).toBe('Kim');
         expect(tuple[1]).toBe(10);
         expect(color).toBe(Color.Red);
+        
     });
+    it('여러 타입 지원', () => {
+        let name: string | null = null;
+        name = 'Kim';
+        expect(name).toBe('Kim');
+    });       
     it('함수 선언', () => {
         // 함수 선언
         function add1(a: number, b: number): number {
@@ -201,7 +207,10 @@ describe('타입스크립트 인터페이스', () => {
         const user: IUser = {
             id: 1,
             name: 'Kim',
+
+            // this 사용시에는 화살표 함수를 사용하지 않습니다.
             getName: function () {
+                
                 return this.name;
             },
         };
@@ -232,7 +241,7 @@ describe('타입스크립트 인터페이스', () => {
             (a: number, b: number): number; // 숫자 2개를 전달받아 숫자를 리턴하는 함수
         }
 
-        const addFunc: IAdd = function (a: number, b: number): number {
+        const addFunc: IAdd = (a: number, b: number): number => {
             return a + b;
         };
 
