@@ -46,7 +46,20 @@ describe('타입스크립트 기본 문법', () => {
         let name: string | null = null;
         name = 'Kim';
         expect(name).toBe('Kim');
-    });       
+    });   
+    it('Non-null 단언 연산자', () => {
+        let a: number | null = null; // 일반 변수
+
+        const b = 10;
+        if (b === 10) { // 상수 연산이므로 a는 null이 아닙니다.
+            a = 10; 
+        }
+        
+        // const c: number = a; // (X) 컴파일 오류. Type 'number | null' is not assignable to type 'number'
+        const c: number = a!; // (O) !으로 null이 아님을 단정합니다.
+
+        expect(c).toBe(10);
+    });    
     it('함수 선언', () => {
         // 함수 선언
         function add1(a: number, b: number): number {
