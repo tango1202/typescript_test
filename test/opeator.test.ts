@@ -173,8 +173,9 @@ describe('타입스크립트 기본 문법', () => {
         expect(base2 instanceof Derived).toBe(true);
     });
     it('추상 클래스', () => {
+        // 추상 클래스입니다.
         abstract class Shape {
-            // 추상 클래스입니다.
+            
             width: number;
             height: number;
 
